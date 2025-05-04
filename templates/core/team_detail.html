@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{ team.name }}</title>
+</head>
+<body>
+  <h1>{{ team.name }} ({{ team.region }})</h1>
+  <p>Founded: {{ team.founded }}</p>
+  {% if team.logo %}
+    <p><img src="{{ team.logo }}" alt="{{ team.name }} logo" width="200"></p>
+  {% endif %}
+
+  <h2>Roster</h2>
+  <ul>
+    {% for player in players %}
+      <li>{{ player.name }} — {{ player.role }}{% if player.joined %} since {{ player.joined }}{% endif %}</li>
+    {% empty %}
+      <li>No players on record.</li>
+    {% endfor %}
+  </ul>
+
+  <p><a href="{% url 'team_list' %}">← Back to all teams</a></p>
+</body>
+</html>

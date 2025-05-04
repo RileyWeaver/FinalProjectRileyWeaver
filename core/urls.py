@@ -2,6 +2,8 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('teams/', views.team_list, name='team_list'),
-    path('teams/<int:pk>/', views.team_detail, name='team_detail'),
+    path("champs/",     views.champ_list,   name="champ_list"),
+
+    path("champs/<str:champ_id>/", views.champ_detail, name="champ_detail"),
+
 ]

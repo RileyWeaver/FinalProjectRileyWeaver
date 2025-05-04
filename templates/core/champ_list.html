@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <ul class="grid champ-grid">
+    {% for champ in champs %}
+      <li class="champ-card">
+        <a href="{% url 'champ_detail' champ.key %}">
+          <img src="https://ddragon.leagueoflegends.com/cdn/{{ champ.version }}/img/champion/{{ champ.image.full }}" alt="{{ champ.name }}" width="80">
+          <h2>{{ champ.name }}</h2>
+          <div class="stats">HP: {{ champ.stats.hp }}, AD: {{ champ.stats.attackdamage }}, MS: {{ champ.stats.movespeed }}</div>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

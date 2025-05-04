@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}{{ champ.name }} – Details{% endblock %}
+
+{% block content %}
+<article class="champ-detail max-w-2xl mx-auto">
+  <h1 class="text-3xl mb-2">{{ champ.name }} &ndash; {{ champ.title }}</h1>
+  <img class="block mb-4"
+       src="https://ddragon.leagueoflegends.com/cdn/{{ champ.version }}/img/champion/{{ champ.image.full }}"
+       alt="{{ champ.name }}" width="120">
+
+  <section class="lore mb-6">
+    <p>{{ champ.lore }}</p>
+  </section>
+
+  <section class="base-stats mb-6">
+    <h2 class="text-2xl mb-2">Base Stats</h2>
+    <ul class="list-disc list-inside">
+      <li>Health: {{ champ.stats.hp }} (+{{ champ.stats.hpperlevel }} per level)</li>
+      <li>Mana: {{ champ.stats.mp }} (+{{ champ.stats.mpperlevel }} per level)</li>
+      <li>Attack Damage: {{ champ.stats.attackdamage }} (+{{ champ.stats.attackdamageperlevel }} per level)</li>
+      <li>Armor: {{ champ.stats.armor }} (+{{ champ.stats.armorperlevel }} per level)</li>
+      <li>Attack Range: {{ champ.stats.attackrange }}</li>
+      <li>Move Speed: {{ champ.stats.movespeed }}</li>
+    </ul>
+  </section>
+
+  <!-- placeholder for Abilities, Search etc. -->
+</article>
+{% endblock %}

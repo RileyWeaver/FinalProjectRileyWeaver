@@ -1,14 +1,14 @@
-from django.shortcuts import render,get_object_or_404
-from .models import Team
+from django.shortcuts import render
+from .services import fetch_champions
 
-# Create your views here.
-def team_list(request):
-    """Show all teams."""
-    teams = Team.objects.all().order_by('name')
-    return render(request, 'core/team_list.html', {'teams': teams})
+def champ_list(request):
+    champions = fetch_champions()
+    return render(request, "core/champ_list.html", {
+        "champions": champions,
+    })
 
-def team_detail(request, pk):
-    """Show one team and its roster."""
-    team = get_object_or_404(Team, pk=pk)
-    players = team.players.all()  # thanks to related_name='players'
-    return render(request, 'core/team_detail.html', {'team': team, 'players': players})
+def champ_detail(request, champ_id):
+    champions = fetch_champions()
+    champ = next(c for c in champions if c["id"] == champ_id)
+    return render(request, "core/champ_detail.html", {"champ": champ})
+

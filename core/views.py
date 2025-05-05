@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .services import fetch_champions
+from .services import fetch_champions, fetch_champion_detail
 
 def champ_list(request):
     champions = fetch_champions()
@@ -7,8 +7,8 @@ def champ_list(request):
         "champions": champions,
     })
 
-def champ_detail(request, champ_id):
-    champions = fetch_champions()
-    champ = next(c for c in champions if c["id"] == champ_id)
-    return render(request, "core/champ_detail.html", {"champ": champ})
-
+def champ_detail(request, champ_key):
+    champ = fetch_champion_detail(champ_key)
+    return render(request, "core/champ_detail.html", {
+        "champ": champ,
+    })

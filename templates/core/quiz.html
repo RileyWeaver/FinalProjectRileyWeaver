@@ -3,6 +3,7 @@
 {% block content %}
   <h1>Champion Quiz</h1>
 
+    {# Shows current score as well as feedback message  #}
   <p style="color:#1e90ff; font-weight:bold;">Score: {{ score }}</p>
   {% if feedback %}
     <p style="color:#ffcc00;">{{ feedback }}</p>
@@ -10,11 +11,13 @@
 
   <form method="post">
     {% csrf_token %}
+      {# For random image in quiz #}
     <img
       src="https://ddragon.leagueoflegends.com/cdn/{{ champ.version }}/img/champion/{{ champ.image.full }}"
       alt="Who is this champion?"
       style="display:block; margin:1rem auto; width:128px; height:128px; border:1px solid #444;"
     >
+      {# For users guess #}
     <input
       type="text"
       name="answer"

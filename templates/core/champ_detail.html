@@ -1,14 +1,17 @@
-<!-- champ_detail.html -->
 {% extends "base.html" %}
 {% block content %}
 <div class="container">
   <div class="champ-header">
+      {# This is for the champion image #}
     <img src="https://ddragon.leagueoflegends.com/cdn/{{ champ.version }}/img/champion/{{ champ.image.full }}" alt="{{ champ.name }}">
+      {# Champ name and title #}
     <h1>{{ champ.name }} — {{ champ.title }}</h1>
   </div>
 
+    {# this is for the lore #}
   <p>{{ champ.lore }}</p>
 
+    {# Shows the stats in detail including the increase by level  #}
   <h2>Base Stats</h2>
   <ul class="stats-list">
     <li>Health: {{ champ.stats.hp }} (+{{ champ.stats.hpperlevel }} per level)</li>
@@ -19,6 +22,7 @@
     <li>Move Speed: {{ champ.stats.movespeed }}</li>
   </ul>
 
+    {# Ability shown below stats in detail page  #}
   <h2>Abilities</h2>
   <ul class="ability-list">
     {% for spell in champ.spells %}

@@ -127,6 +127,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Go to champs page after login
 LOGIN_REDIRECT_URL = "/champs/"
+
+# When logout go back to login page
 LOGOUT_REDIRECT_URL = "/"
 

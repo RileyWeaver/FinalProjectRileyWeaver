@@ -30,9 +30,9 @@ To create a admin user for the admin side of the project us the command below
 ```
 python manage.py createsuperuser
 ```
-After the superuser is made and you execute the program you will load a page to your localhost, from there in the url
-type /admin and use the superuser info to login to the admin side. If you wan to be a normal user you can register one 
-on the admin side or you can use your super user to login to the normal site. You can also register another account of 
+After the superuser is made, and you execute the program you will load a page to your localhost, from there in the url
+type /admin and use the superuser info to log in to the admin side. If you want to be a normal user you can register one 
+on the admin side, or you can use your superuser to log in to the normal site. You can also register another account of 
 you want to.
 
 ## Authors
@@ -44,6 +44,5 @@ Riley Weaver
 
 Inspiration, code snippets, etc.
 * [Login/authentication](https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Server-side/Django/Authentication)
-* [Youtube](https://www.youtube.com/watch?v=UB7XFf0Q_M4)
-* [Tutorial](https://docs.djangoproject.com/en/4.2/)
-* [ChatGPT](https://chatgpt.com/share/67f3098f-b0c0-8005-bd08-754c64af7082)
+* [Youtube](https://www.youtube.com/watch?v=F5mRW0jo-U4)
+* [API](https://riot-api-libraries.readthedocs.io/en/latest/ddragon.html)

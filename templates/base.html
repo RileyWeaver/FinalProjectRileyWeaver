@@ -102,6 +102,21 @@
   </style>
 </head>
 <body>
+
+<nav style="
+    background: #111;
+    padding: .5rem 1rem;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.5);
+  ">
+    <a href="{% url 'champ_list' %}" style="color:#eee; margin-right:1rem; text-decoration:none;">Champions</a>
+    <a href="{% url 'quiz' %}"       style="color:#eee; margin-right:auto; text-decoration:none;">Quiz</a>
+    {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}"   style="color:#eee; text-decoration:none;">Log Out</a>
+    {% endif %}
+  </nav>
+
   <div class="container">
     {% block content %}{% endblock %}
   </div>

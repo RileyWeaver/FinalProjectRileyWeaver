@@ -1,28 +1,35 @@
 from django.db import models
 
-# Create your models here.
-class Team(models.Model):
-    name    = models.CharField(max_length=100, unique=True)
-    region  = models.CharField(max_length=50)
-    founded = models.PositiveIntegerField()
-    logo    = models.URLField(blank=True)
+class Champion(models.Model):
+    key   = models.CharField(max_length=64, unique=True)
+    name  = models.CharField(max_length=100)
+    title = models.CharField(max_length=200)
+    blurb = models.TextField(blank=True)
+
+    # base stats
+    hp       = models.IntegerField()
+    hpperlevel = models.FloatField()
+    mp       = models.IntegerField()
+    mpperlevel = models.FloatField()
+    attackdamage = models.FloatField()
+    attackdamageperlevel = models.FloatField()
+    armor    = models.FloatField()
+    armorperlevel = models.FloatField()
+    attackrange    = models.FloatField()
+    movespeed      = models.FloatField()
 
     def __str__(self):
-        return f"{self.name} ({self.region})"
+        return self.name
 
-class Player(models.Model):
-    ROLES = [
-        ('Top',     'Top'),
-        ('Jungle',  'Jungle'),
-        ('Mid',     'Mid'),
-        ('ADC',     'ADC'),
-        ('Support', 'Support'),
-    ]
+class Ability(models.Model):
+    champion   = models.ForeignKey(Champion, on_delete=models.CASCADE, related_name="abilities")
+    key        = models.CharField(max_length=2)       # e.g. "Q", "W", "E", "R"
+    name       = models.CharField(max_length=100)
+    description= models.TextField()
 
-    name   = models.CharField(max_length=100)
-    role   = models.CharField(max_length=20, choices=ROLES)
-    team   = models.ForeignKey(Team, on_delete=models.CASCADE, related_name='players')
-    joined = models.DateField(null=True, blank=True)
+    class Meta:
+        unique_together = ("champion", "key")
+        ordering = ("champion", "key")
 
     def __str__(self):
-        return f"{self.name} — {self.role}"
+        return f"{self.champion.name} {self.key}"
